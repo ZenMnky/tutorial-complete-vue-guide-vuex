@@ -1,16 +1,7 @@
 import { createApp } from 'vue';
-import { createStore } from 'vuex';
+import store from './store/index';
 
 import App from './App.vue';
-import counterModule from './store_modules/counterModule';
-import authModule from './store_modules/authModule';
-
-const store = createStore({
-  modules: {
-    counter: counterModule,
-    auth: authModule
-  }
-});
 
 const app = createApp(App);
 
