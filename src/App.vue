@@ -3,6 +3,7 @@
     <h3>Count: {{ counter }}</h3>
     <button @click="addValue">Add 10</button>
     <button @click="clearCounter">Reset</button>
+    <button @click="delayedIncrement">Delayed Add 1</button>
   </base-container>
   <FavoriteValue />
   <NormalizedCounter />
@@ -30,6 +31,9 @@ export default {
     },
     clearCounter() {
       this.$store.commit('clearCount');
+    },
+    delayedIncrement() {
+      this.$store.dispatch('increment');
     }
   },
   computed: {
