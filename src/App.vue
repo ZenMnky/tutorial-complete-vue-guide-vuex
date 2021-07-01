@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     counter() {
-      return this.$store.state.counter;
+      return this.$store.getters.rawCounter;
     },
     isAuth() {
       return this.$store.getters.userIsAuthenticated;
