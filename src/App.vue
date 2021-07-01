@@ -1,19 +1,23 @@
 <template>
-  <base-container title="Vuex">
+  <base-container title="Auth">
+    <UserAuth />
+  </base-container>
+  <base-container title="Vuex" v-if="isAuth">
     <h3>Count: {{ counter }}</h3>
     <button @click="addValue">Add 10</button>
     <button @click="increase({ value: 5 })">Add 5</button>
     <button @click="clearCounter">Reset</button>
     <button @click="delayedIncrement">Delayed Add 1</button>
+    <FavoriteValue />
+    <NormalizedCounter />
   </base-container>
-  <FavoriteValue />
-  <NormalizedCounter />
 </template>
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
 import FavoriteValue from './components/FavoriteValue.vue';
 import NormalizedCounter from './components/NormalizedCounter.vue';
+import UserAuth from './components/UserAuth.vue';
 
 import { mapActions } from 'vuex';
 
@@ -21,7 +25,8 @@ export default {
   components: {
     BaseContainer,
     FavoriteValue,
-    NormalizedCounter
+    NormalizedCounter,
+    UserAuth
   },
   methods: {
     addValue() {
@@ -42,6 +47,9 @@ export default {
   computed: {
     counter() {
       return this.$store.state.counter;
+    },
+    isAuth() {
+      return this.$store.getters.userIsAuthenticated;
     }
   }
 };
